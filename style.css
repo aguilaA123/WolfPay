@@ -1,0 +1,167 @@
+:root {
+  --teal:#11d7d7;
+  --bg:#171a1f;
+  --card:#ffffff;
+  --text:#0b0f14;
+  --muted:#6b7280;
+  --button:#10c7c7;
+  --button-text:#032b2b;
+  --shadow:0 12px 40px rgba(0,0,0,.25);
+  --radius:22px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+}
+
+/* Franja superior */
+.hero {
+  background: var(--teal);
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -80px; /* 🔼 Sube solo el logo un poco más */
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contenedor global (logo + tarjeta suben juntos) */
+.wrap {
+  margin-top: -100px; /* 🔼 sube todo el bloque */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Tarjeta */
+.card {
+  width: min(440px, 85vw);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: center;
+  margin: 4px 0 22px;
+}
+
+.field { margin: 18px 0; }
+
+.label {
+  font-size: 14px;
+  letter-spacing: .4px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 10px 2px 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 3px solid #1f2937;
+  transition: border-color .2s ease;
+}
+
+.input:focus { border-bottom-color: #0ea5a5; }
+
+/* Botón */
+.actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: var(--button);
+  color: var(--button-text);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: .5px;
+  padding: 14px 34px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  transition: transform .06s ease, filter .2s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+/* Acceso biométrico */
+.biometric {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #7de6e6;
+  font-weight: 700;
+  text-align: center;
+}
+
+.biometric svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+/* Mensaje de error / éxito */
+.message {
+  margin-top: 14px;
+  text-align: center;
+  min-height: 22px;
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity .25s ease;
+}
+
+.message.error {
+  color: #b91c1c; /* rojo */
+}
+
+.message.success {
+  color: #059669; /* verde */
+}
+
+/* Responsive */
+@media (max-width:420px) {
+  .title { font-size: 24px; }
+  .btn { font-size: 18px; }
+  .input { font-size: 20px; }
+}
