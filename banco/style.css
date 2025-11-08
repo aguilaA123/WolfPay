@@ -1,0 +1,290 @@
+/* 🔹 Quitar el borde azul al enfocar botones e inputs */
+button, 
+input, 
+textarea {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent; /* evita el flash gris/azul en móviles */
+}
+
+/* 🔹 Mejor sensación táctil (sin seleccionar texto al tocar) */
+button, 
+input, 
+img {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 🔹 Efecto suave al presionar botones */
+button:active {
+  transform: scale(0.98);
+  transition: transform 0.05s ease;
+}
+:root {
+  --teal:#11d7d7;
+  --bg:#171a1f;
+  --card:#1e2228;
+  --text:#ffffff;
+  --muted:#a1a1a1;
+  --danger:#b91c1c;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 18px 40px;
+}
+
+/* Título */
+.titulo {
+  color: var(--teal);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.divider {
+  border: none;
+  height: 1px;
+  background: #30343b;
+  margin-bottom: 20px;
+}
+
+/* Tarjeta de cuenta */
+.card.cuenta {
+  position: relative;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+}
+.saldo {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.iban {
+  font-size: 14px;
+  color: var(--teal);
+}
+.copy-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--teal);
+}
+
+/* Botón Congelar */
+.btn.congelar {
+  display: block;
+  width: 100%;
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+/* Bizum */
+.bizum-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bizum-logo img {
+  width: 80px;
+  height: auto;
+}
+
+/* tarjeta Bizum */
+.bizum-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 22px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;              /* 🔽 un poco más junto */
+  min-height: 92px;
+}
+.bizum-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+}
+.bizum-info strong { color: var(--teal); }
+.bizum-info span   { color: var(--text); }
+
+/* botón verificar */
+.verificar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;               /* 🔽 acercamos la imagen al texto */
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 13.5px;
+  border: 1px solid rgba(125,230,230,.25);
+  background: transparent;
+  border-radius: 999px;
+  padding: 7px 8px;       /* 🔽 más angosto */
+  min-width: 110px;       /* 🔽 ancho reducido */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.verificar img {
+  width: 32px;            /* 🔽 un pelín más chico */
+  height: 32px;
+  display: block;
+}
+.verificar:hover {
+  background: rgba(17,215,215,0.1);
+  transform: scale(1.03);
+}
+
+/* ===== Modal Bizum ===== */
+.bizum-modal {
+  position: relative;
+}
+.bizum-modal .cerrar {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 18px;
+  cursor: pointer;
+}
+.bizum-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #11d7d7;
+  background: #101417;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+}
+.bizum-modal input::placeholder {
+  color: #777;
+}
+.bizum-modal .verificarMonto {
+  width: 100%;
+  background: #10c7c7;
+  border: none;
+  color: #012222;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ===== Mensajes de estado Bizum (versión mejorada) ===== */
+.bizum-status {
+  margin-top: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px; /* separa el texto del botón */
+}
+
+.bizum-status p {
+  font-weight: 800;
+  font-size: 20px; /* antes 15px */
+  letter-spacing: 0.3px;
+}
+
+.bizum-status span {
+  display: block;
+  font-size: 14.5px; /* un poco más grande */
+  color: #b5b5b5;
+  margin-top: 4px;
+}
+
+.estadoMsg .gris {
+  color: #b4d8d8;
+  animation: parpadeo 1.4s infinite;
+}
+.estadoMsg .naranja {
+  color: #f9a826;
+}
+.estadoMsg .verde {
+  color: #10c76f;
+}
+.estadoMsg .rojo {
+  color: #e74c3c;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 0.45; }
+}
+
+/* ===== Botón Cancelar (nuevo espaciado) ===== */
+.cancelarBizum {
+  margin-top: 16px; /* más separado del texto */
+  margin-bottom: 25px; /* evita que quede tan pegado abajo */
+  background: #b91c1c;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.cancelarBizum:active {
+  transform: scale(0.97);
+  background: #9e1616;
+}
+
+/* ===== Bizum cabecera (logo + monto) ===== */
+.bizum-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.bizum-logo img {
+  width: 80px;
+  height: auto;
+}
+
+.bizum-monto {
+  display: none; /* oculto por defecto */
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(126, 224, 224, 0.85);
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+.bizum-monto.visible {
+  display: block;
+  opacity: 1;
+}
